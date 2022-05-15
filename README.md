@@ -66,4 +66,4 @@ T2_contri, SPE_contri = pca.get_contributions(data_test_normal[15,:])
 ```
     
 ### License
-All code is provided under a BSD 3-clause license. See LICENSE file for more information.
+All code is provided under MIT license. See LICENSE file for more information.
