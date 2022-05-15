@@ -35,7 +35,7 @@ The main modules in the package currently are:
      - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
      - *detect_abnormalities*: detects if the observations are abnormal or normal samples
  
-## Instalation <a name="install"></a>
+## Installation <a name="install"></a>
 Installation from Pypi:
 
     pip install PDStoolkit
