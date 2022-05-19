@@ -49,7 +49,7 @@ Import modules
 The following code builds a PCA-based process monitoirng model using PDS-PCA class and uses it for subsequent fault detectiona and fault diagnosis on test data. For details on data and results, see the ProcessMonitoring_PCA notebook in the tutorials folder.
 
 ```
-# imports
+# import 
 from PDStoolkit import PDS_PCA
 
 # fit PDS_PCA model
@@ -60,7 +60,7 @@ T2_train, SPE_train = pca.computeMetrics(data_train_normal, isTrainingData=True)
 T2_CL, SPE_CL = pca.computeThresholds(method='statistical', alpha=0.01)
 pca.draw_monitoring_charts(title='training data')
 
-# fault detectiona and fault diagnosis on test data
+# fault detection and fault diagnosis on test data
 pca.detect_abnormalities(data_test_normal, title='test data')
 T2_contri, SPE_contri = pca.get_contributions(data_test_normal[15,:])
 ```
