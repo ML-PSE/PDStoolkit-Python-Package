@@ -1,6 +1,6 @@
 """
 A module for customized PCA class for process monitoring and fault diagnosis.
-Monitoring methodology is described is our book  'Machine Learning for Process Systems Engineering' (https://leanpub.com/machineLearningPSE)
+Monitoring methodology is described in our book  'Machine Learning for Process Systems Engineering' (https://mlforpse.com/books/)
 ============================================================================
 """
 
