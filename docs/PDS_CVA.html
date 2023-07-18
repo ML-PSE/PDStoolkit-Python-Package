@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>PDS_CVA API documentation</title>
+<meta name="description" content="A module for CVA class for dynamic process monitoring.
+Monitoring methodology is described is our book
+&#39;Machine Learning in Python for Dynamic …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>PDS_CVA</code></h1>
+</header>
+<section id="section-intro">
+<p>A module for CVA class for dynamic process monitoring.
+Monitoring methodology is described is our book
+'Machine Learning in Python for Dynamic Process Systems' (<a href="https://mlforpse.com/books/">https://mlforpse.com/books/</a>)
+=======================================================</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+A module for CVA class for dynamic process monitoring. 
+Monitoring methodology is described is our book  &#39;Machine Learning in Python for Dynamic Process Systems&#39; (https://mlforpse.com/books/)
+=======================================================
+&#34;&#34;&#34;
+
+# Version: 2023
+# Author: Ankur Kumar @ MLforPSE.com
+# License: BSD 3 clause
+
+#%% Imports
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+import scipy
+import sys
+
+#%% utility functions
+
+def _get_past_future_vectors(U, Y, l, getBothMatrices=True):
+    &#34;&#34;&#34; generate matrix with past (p) and future (f) vectors
+    
+    Parameters:
+    ---------------------
+    U: ndarray of shape (n_samples, n_features)
+        Input/Predictor data, where n_samples is the number of samples and n_features is the number of predictors
+        
+    Y: ndarray of shape (n_samples, n_targets)
+        Output/Target data, where n_samples is the number of samples and n_targets is the number of response variables.
+    
+    l: integer. The lag order.
+    
+    getBothMatrices: bool
+        If True, then then both pMatrix and fMatrix are computed else only pMatrix is computed
+        
+    
+    Returns:
+    ---------------------
+    pMatrix: if getBothMatrices is True then ndarray of shape (n_samples-2*l, l*(n_features+n_targets)) 
+             if getBothMatrices is False then ndarray of shape (n_samples-l+1, l*(n_features+n_targets)) 
+             
+    fMatrix: ndarray of shape (n_samples-2*l, (l+1)*n_targets). Computed only when getBothMatrices is True.
+    
+    &#34;&#34;&#34;
+    
+    # sanity check on the number of samples
+    
+    if getBothMatrices:
+        if (U.shape[0] &lt; 2*l+1) or (Y.shape[0] &lt; 2*l+1):
+            raise ValueError(&#34;Data matrices must have atleast 2*n_lags+1 samples&#34;)     
+    else:
+        if U.shape[0] &lt; l:
+            raise ValueError(&#34;Input data matrix must have atleast n_lags samples&#34;)
+    
+    N = U.shape[0]
+    m = U.shape[1]
+    r = Y.shape[1]
+    
+    if getBothMatrices:
+        pMatrix = np.zeros((N-2*l, l*(m+r)))
+        fMatrix = np.zeros((N-2*l, (l+1)*r))
+        
+        for i in range(l,N-l):
+            pMatrix[i-l,:] = np.hstack((Y[i-l:i,:].flatten(), U[i-l:i,:].flatten()))
+            fMatrix[i-l,:] = Y[i:i+l+1,:].flatten()
+    
+    else:
+        pMatrix = np.zeros((N-l+1, l*(m+r)))
+        fMatrix = None
+        
+        for i in range(l,N+1):
+            pMatrix[i-l,:] = np.hstack((Y[i-l:i,:].flatten(), U[i-l:i,:].flatten()))
+        
+    return pMatrix, fMatrix
+
+#%% define class
+class PDS_CVA():
+    &#39;&#39;&#39; This class provides the following methods
+    
+    1) computeMetrics: computes the monitoring indices (Ts2, Te2, Q) for the supplied data
+    2) computeThresholds: computes the thresholds/control limits for the monitoring indices from training data
+    3) draw_monitoring_charts: Draw the monitoring charts for the training or test data
+    4) detect_abnormalities: Detects if the observations are abnormal or normal samples
+    
+    Parameters
+    ----------
+    n_lags: integer (default 1)
+        The number of lags to be used for data augumentation.
+    
+    n_components: integer (default 2)
+        Number of components to keep.
+        
+    
+    Attributes
+    ----------
+    n_lags: integer. The number of lags used for data augumentation.
+    
+    n_components: integer. The number of components.
+    
+    
+    Usage Example
+    --------
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; from PDStoolkit import PDS_CVA
+    
+    &gt;&gt;&gt; U = np.random.rand(30,5)
+    &gt;&gt;&gt; Y = np.random.rand(30,3)
+    
+    &gt;&gt;&gt; cva = PDS_CVA(n_lags=3, n_components=2)
+    &gt;&gt;&gt; cva.fit(U, Y)
+    
+    &gt;&gt;&gt; metrics_train = cva.computeMetrics(U, Y, isTrainingData=True)
+    &gt;&gt;&gt; Ts2_CL, Te2_CL, Q_CL = cva.computeThresholds()
+    &gt;&gt;&gt; cva.draw_monitoring_charts(metrics=metrics_train, title=&#39;training data&#39;)
+    
+    &gt;&gt;&gt; U_test = np.random.rand(30,5)
+    &gt;&gt;&gt; Y_test = np.random.rand(30,3) 
+    &gt;&gt;&gt; abnormalityFlags = cva.detect_abnormalities(U_test, Y_test, title=&#39;Test data&#39;)
+    &#39;&#39;&#39;
+    
+    def __init__(self, n_lags=1, n_components=2):
+        # sanity check (positive lag and order)
+        if n_lags &lt; 1 or n_components &lt; 1 or isinstance(n_lags, float) or isinstance(n_components, float):
+            raise ValueError(&#34;Parameters must be positive integers&#34;)
+        
+        self.n_lags = n_lags
+        self.n_components = n_components
+        self.pScaler = StandardScaler(with_std=False)
+        self.fScaler = StandardScaler(with_std=False)
+        
+    
+    def fit(self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=True):
+        &#34;&#34;&#34;
+        Computes the transformation matrices. Optionally finds the &#39;optimal&#39; number of states / model order.
+        
+        Parameters:
+        ---------------------
+        U: ndarray of shape (n_samples, n_features)
+            Training input data, where n_samples is the number of samples and n_features is the number of predictors
+            
+        Y: ndarray of shape (n_samples, n_targets)
+            Training output data, where n_samples is the number of samples and n_targets is the number of response variables.
+                
+        autoFindNcomponents: bool, optional (default False)
+            Decides whether to compute the &#39;optimal&#39; model order. 
+            If True, the Hankel singular values are used. Model order, n, is chosen such that the normalized values of the (n+1)th onwards singular
+                     values are below ratioThreshold.
+            
+        ratioThreshold: float, optional (default 0.1)
+            Real value between 0 and 1.
+            Used for determination of model order using normalized Hankel singular values.
+            
+        Returns
+        ---------------------
+        self: object
+            fitted model
+        &#34;&#34;&#34;
+        
+        # sanity check (positive lag and order)
+        if U.ndim != 2 or Y.ndim != 2:
+            raise ValueError(&#34;U and Y matrices must be 2 dimensional arrays&#34;)
+        
+        # generate past (p) and future (f) vectors for training dataset
+        pMatrix_train, fMatrix_train = _get_past_future_vectors(U, Y, self.n_lags, getBothMatrices=True)
+        
+        # center data
+        pMatrix_train_centered = self.pScaler.fit_transform(pMatrix_train)
+        fMatrix_train_centered = self.fScaler.fit_transform(fMatrix_train)
+        
+        # perform SVD
+        sigma_pp = np.cov(pMatrix_train_centered, rowvar=False)
+        sigma_ff = np.cov(fMatrix_train_centered, rowvar=False)
+        sigma_pf = np.cov(pMatrix_train_centered, fMatrix_train_centered, rowvar=False)[:len(sigma_pp),len(sigma_pp):]
+        
+        matrixProduct = np.dot(np.dot(np.linalg.inv(scipy.linalg.sqrtm(sigma_pp).real), sigma_pf), np.linalg.inv(scipy.linalg.sqrtm(sigma_ff).real))
+        U, S, V = np.linalg.svd(matrixProduct)
+        J = np.dot(np.transpose(U), np.linalg.inv(scipy.linalg.sqrtm(sigma_pp).real))
+        self.SingularValues = S
+        
+        # plot Hankel singular values
+        if HankelPlot:
+            plt.figure()
+            plt.plot(np.arange(1,len(S)+1), S, &#39;*&#39;)
+            plt.xlabel(&#39;Order # &#39;), plt.ylabel(&#39;Singular value&#39;)
+            plt.xlim(1), plt.show()
+            
+        # find optimal model order via Singular values if specified
+        if autoFindNcomponents:
+            self.n_components = np.where(S/S[0] &gt; ratioThreshold)[0][-1] + 1    
+            # print message with selected model order
+            print(&#39;Optimal model order selected is: &#39;, self.n_components)
+        
+        # get the reduced order matrices
+        Jn = J[:self.n_components,:]
+        Je = J[self.n_components:,:]
+        self.Jn = Jn
+        self.Je = Je
+        
+        return self
+        
+    def computeMetrics(self, U, Y, isTrainingData=False):
+        &#34;&#34;&#34;
+        computes the monitoring indices for the supplied data.
+        
+        Parameters:
+        ---------------------
+        U: ndarray of shape (n_samples, n_features)
+            Input/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors
+            
+        Y: ndarray of shape (n_samples, n_targets)
+            Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.
+            
+        isTrainingData: bool, optional (default False)
+            If True, then the computed metrics are stored as object properties which are utilized during computation of metric thresholds
+                          
+        Returns:
+        ---------------------
+        Ts2: ndarray of shape (n_samples, ).
+            The first n_lags-1 entries are nan.
+        
+        Te2: ndarray of shape (n_samples, ).
+            The first n_lags-1 entries are nan.
+        
+        Q: ndarray of shape (n_samples, ).
+            The first n_lags-1 entries are nan.
+        &#34;&#34;&#34;
+        
+        if not hasattr(self, &#39;Jn&#39;):
+            raise AttributeError(&#39;Transformation matrix not found. Run fit method before computing the metrics.&#39;)
+        
+        # generate past (p) and future (f) vector Matrices and center them
+        pMatrix, _ = _get_past_future_vectors(U, Y, self.n_lags, getBothMatrices=False)
+        pMatrix_centered = self.pScaler.transform(pMatrix)
+        
+        # Ts2
+        Xn = np.dot(self.Jn, pMatrix_centered.T)
+        Ts2 = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(Xn[:,i], Xn[:,i]) for i in range(pMatrix_centered.shape[0])]))
+        
+        # Te2
+        Xe = np.dot(self.Je, pMatrix_centered.T)
+        Te2 = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(Xe[:,i], Xe[:,i]) for i in range(pMatrix_centered.shape[0])]))
+        
+        # Q
+        r = pMatrix_centered.T - np.dot(self.Jn.T, Xn)
+        Q = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(r[:,i], r[:,i]) for i in range(pMatrix_centered.shape[0])]))
+        
+        # save metrics for training data as attributes
+        if isTrainingData:
+            self.Ts2_train = Ts2
+            self.Te2_train = Te2
+            self.Q_train = Q
+        
+        return Ts2, Te2, Q
+    
+    def computeThresholds(self, method=&#39;percentile&#39;, percentile=99, alpha=0.01):
+        &#34;&#34;&#34;
+        computes the thresholds/control limits for the monitoring indices from training data
+        
+        Parameters:
+        ---------------------
+        method: &#39;percentile&#39; or &#39;statistical&#39;; default &#39;percentile&#39;   
+                    
+        percentile: int, optional (default 99)
+            The percentile value to use if method=&#39;percentile&#39;
+            
+        alpha: int, optional (default 99)
+            The significance level to use if method=&#39;statistical&#39;. 
+            Default value of 0.01 imples 99% control limit.
+                         
+        Returns
+        ---------------------
+        Ts2_CL: float
+            Control limit/threshold for Ts2 metric
+        
+        Te2_CL: float
+            Control limit/threshold for Te2 metric
+        
+        Q_CL: float
+            Control limit/threshold for Q metric
+        &#34;&#34;&#34;
+        
+        if not hasattr(self, &#39;Ts2_train&#39;):
+            raise AttributeError(&#39;Training metrices not found. Run computeMetrics method before computing the thresholds.&#39;)
+            
+        if method == &#39;percentile&#39;:
+            Ts2_CL = np.nanpercentile(self.Ts2_train, percentile)
+            Te2_CL = np.nanpercentile(self.Te2_train, percentile)
+            Q_CL = np.nanpercentile(self.Q_train, percentile)
+            
+        elif method == &#39;statistical&#39;:
+            N = self.T2_train.shape[0]
+            k = self.n_components
+            
+            # Ts2_CL
+            Ts2_CL = k*(N**2-1)*scipy.stats.f.ppf(1-alpha,k,N-k)/(N*(N-k))
+            
+            # Te2_CL
+            z = self.Je.shape[0]
+            Te2_CL = z*(N**2-1)*scipy.stats.f.ppf(1-alpha,z,N-z)/(N*(N-z))
+
+            # Q_CL
+            mean_Q_train = np.nanmean(self.Q_train)
+            var_Q_train = np.nanvar(self.Q_train)
+            
+            if mean_Q_train == 0:
+                mean_Q_train = sys.float_info.epsilon
+            if var_Q_train == 0:
+                var_Q_train = sys.float_info.epsilon
+
+            g = var_Q_train/(2*mean_Q_train)
+            h = 2*mean_Q_train**2/var_Q_train
+            Q_CL = g*scipy.stats.chi2.ppf(1-alpha, h)
+        
+        else:
+            raise ValueError(&#39;Incorrect choice of method parameter&#39;)
+            
+        # save control limits as attributes
+        self.Ts2_CL = Ts2_CL
+        self.Te2_CL = Te2_CL
+        self.Q_CL = Q_CL
+        
+        return Ts2_CL, Te2_CL, Q_CL
+    
+    def draw_monitoring_charts(self, metrics=None, logScaleY=False, title=&#39;&#39;):
+        &#34;&#34;&#34;
+        Draw the monitoring charts for the training or test data.
+        The control limits are plotted as red dashed line. 
+        
+        Parameters:
+        ---------------------
+        metrics: (optional) list or tuple of monitoring metrics (1D numpy arrays). Should follow the order (Ts2, Te2, Q).
+            If not specified, then the object&#39;s stored metrics from training data are used.
+            
+        title: str, optional 
+            Title for the charts                      
+        &#34;&#34;&#34;
+        
+        if metrics is None:
+            metrics = (self.Ts2_train, self.Te2_train, self.Q_train)
+        
+        # Ts2
+        plt.figure()
+        plt.plot(metrics[0], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+        if hasattr(self, &#39;Ts2_CL&#39;):
+            plt.axhline(self.Ts2_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+        plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Ts2&#39;)
+        if logScaleY:
+            plt.yscale(&#39;log&#39;)
+        plt.title(title), plt.show()
+                
+        # Te2
+        plt.figure()
+        plt.plot(metrics[1], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+        if hasattr(self, &#39;Te2_CL&#39;):
+            plt.axhline(self.Te2_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+        plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Te2&#39;)
+        if logScaleY:
+            plt.yscale(&#39;log&#39;)
+        plt.title(title), plt.show()
+        
+        # Q
+        plt.figure()
+        plt.plot(metrics[2], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+        if hasattr(self, &#39;Q_CL&#39;):
+            plt.axhline(self.Q_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+        plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Q&#39;)
+        if logScaleY:
+            plt.yscale(&#39;log&#39;)
+        plt.title(title), plt.show()
+    
+    def fit_4_monitoring(self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=False, method=&#39;percentile&#39;, percentile=99, alpha=0.01):
+        &#34;&#34;&#34;
+        A utility method that calls the following model-training related methods in succession.
+        
+        fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+        computeMetrics(U, Y, isTrainingData=True)
+        computeThresholds(method, percentile, alpha)
+        draw_monitoring_charts(title=&#39;training data&#39;)  
+        
+        Note: Check doc string of individual methods for details on the method parameters.
+        &#34;&#34;&#34;
+                
+        self.fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+        self.computeMetrics(U, Y, isTrainingData=True)
+        self.computeThresholds(method, percentile, alpha)
+        self.draw_monitoring_charts(title=&#39;training data&#39;)
+        
+        return self
+    
+    def detect_abnormalities(self, U, Y, drawMonitoringChart=True, title=&#39;&#39;):
+        &#34;&#34;&#34;
+        Detects if the observations are abnormal or normal. 
+        Detection is based on the logic that for a &#39;normal&#39; sample, the monitoring metrics should lie below their thresholds.
+        
+        Parameters:
+        ---------------------
+        U: ndarray of shape (n_samples, n_features)
+            Inputs/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors
+            
+        Y: ndarray of shape (n_samples,) or (n_samples, n_targets)
+            Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.
+            
+        drawMonitoringChart: bool, optional (default True)
+            If True, then the monitoring charts are also drawn.
+        
+        title: str, optional 
+            Title for the charts      
+                              
+        Returns:
+        ---------------------
+        abnormalityFlags: ndarray of shape (n_samples,)
+            Returns True for abnormal samples and False for normal samples
+        &#34;&#34;&#34;
+        
+        Ts2, Te2, Q = self.computeMetrics(U, Y)
+        abnormalityFlags = np.logical_or.reduce((Ts2 &gt; self.Ts2_CL, Te2 &gt; self.Te2_CL, Q &gt; self.Q_CL))
+        print(&#39;Number of abnormal sample(s): &#39;, np.sum(abnormalityFlags))
+        
+        if drawMonitoringChart:
+            self.draw_monitoring_charts(metrics=(Ts2, Te2, Q), title=title)
+                
+        return abnormalityFlags
+        
+        
+        
+        </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="PDS_CVA.PDS_CVA"><code class="flex name class">
+<span>class <span class="ident">PDS_CVA</span></span>
+<span>(</span><span>n_lags=1, n_components=2)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class provides the following methods</p>
+<p>1) computeMetrics: computes the monitoring indices (Ts2, Te2, Q) for the supplied data
+2) computeThresholds: computes the thresholds/control limits for the monitoring indices from training data
+3) draw_monitoring_charts: Draw the monitoring charts for the training or test data
+4) detect_abnormalities: Detects if the observations are abnormal or normal samples</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>n_lags</code></strong> :&ensp;<code>integer (default 1)</code></dt>
+<dd>The number of lags to be used for data augumentation.</dd>
+<dt><strong><code>n_components</code></strong> :&ensp;<code>integer (default 2)</code></dt>
+<dd>Number of components to keep.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<p>n_lags: integer. The number of lags used for data augumentation.</p>
+<p>n_components: integer. The number of components.</p>
+<h2 id="usage-example">Usage Example</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; from PDStoolkit import PDS_CVA
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; U = np.random.rand(30,5)
+&gt;&gt;&gt; Y = np.random.rand(30,3)
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; cva = PDS_CVA(n_lags=3, n_components=2)
+&gt;&gt;&gt; cva.fit(U, Y)
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; metrics_train = cva.computeMetrics(U, Y, isTrainingData=True)
+&gt;&gt;&gt; Ts2_CL, Te2_CL, Q_CL = cva.computeThresholds()
+&gt;&gt;&gt; cva.draw_monitoring_charts(metrics=metrics_train, title='training data')
+</code></pre>
+<pre><code class="language-python-repl">&gt;&gt;&gt; U_test = np.random.rand(30,5)
+&gt;&gt;&gt; Y_test = np.random.rand(30,3) 
+&gt;&gt;&gt; abnormalityFlags = cva.detect_abnormalities(U_test, Y_test, title='Test data')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PDS_CVA():
+    &#39;&#39;&#39; This class provides the following methods
+    
+    1) computeMetrics: computes the monitoring indices (Ts2, Te2, Q) for the supplied data
+    2) computeThresholds: computes the thresholds/control limits for the monitoring indices from training data
+    3) draw_monitoring_charts: Draw the monitoring charts for the training or test data
+    4) detect_abnormalities: Detects if the observations are abnormal or normal samples
+    
+    Parameters
+    ----------
+    n_lags: integer (default 1)
+        The number of lags to be used for data augumentation.
+    
+    n_components: integer (default 2)
+        Number of components to keep.
+        
+    
+    Attributes
+    ----------
+    n_lags: integer. The number of lags used for data augumentation.
+    
+    n_components: integer. The number of components.
+    
+    
+    Usage Example
+    --------
+    &gt;&gt;&gt; import numpy as np
+    &gt;&gt;&gt; from PDStoolkit import PDS_CVA
+    
+    &gt;&gt;&gt; U = np.random.rand(30,5)
+    &gt;&gt;&gt; Y = np.random.rand(30,3)
+    
+    &gt;&gt;&gt; cva = PDS_CVA(n_lags=3, n_components=2)
+    &gt;&gt;&gt; cva.fit(U, Y)
+    
+    &gt;&gt;&gt; metrics_train = cva.computeMetrics(U, Y, isTrainingData=True)
+    &gt;&gt;&gt; Ts2_CL, Te2_CL, Q_CL = cva.computeThresholds()
+    &gt;&gt;&gt; cva.draw_monitoring_charts(metrics=metrics_train, title=&#39;training data&#39;)
+    
+    &gt;&gt;&gt; U_test = np.random.rand(30,5)
+    &gt;&gt;&gt; Y_test = np.random.rand(30,3) 
+    &gt;&gt;&gt; abnormalityFlags = cva.detect_abnormalities(U_test, Y_test, title=&#39;Test data&#39;)
+    &#39;&#39;&#39;
+    
+    def __init__(self, n_lags=1, n_components=2):
+        # sanity check (positive lag and order)
+        if n_lags &lt; 1 or n_components &lt; 1 or isinstance(n_lags, float) or isinstance(n_components, float):
+            raise ValueError(&#34;Parameters must be positive integers&#34;)
+        
+        self.n_lags = n_lags
+        self.n_components = n_components
+        self.pScaler = StandardScaler(with_std=False)
+        self.fScaler = StandardScaler(with_std=False)
+        
+    
+    def fit(self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=True):
+        &#34;&#34;&#34;
+        Computes the transformation matrices. Optionally finds the &#39;optimal&#39; number of states / model order.
+        
+        Parameters:
+        ---------------------
+        U: ndarray of shape (n_samples, n_features)
+            Training input data, where n_samples is the number of samples and n_features is the number of predictors
+            
+        Y: ndarray of shape (n_samples, n_targets)
+            Training output data, where n_samples is the number of samples and n_targets is the number of response variables.
+                
+        autoFindNcomponents: bool, optional (default False)
+            Decides whether to compute the &#39;optimal&#39; model order. 
+            If True, the Hankel singular values are used. Model order, n, is chosen such that the normalized values of the (n+1)th onwards singular
+                     values are below ratioThreshold.
+            
+        ratioThreshold: float, optional (default 0.1)
+            Real value between 0 and 1.
+            Used for determination of model order using normalized Hankel singular values.
+            
+        Returns
+        ---------------------
+        self: object
+            fitted model
+        &#34;&#34;&#34;
+        
+        # sanity check (positive lag and order)
+        if U.ndim != 2 or Y.ndim != 2:
+            raise ValueError(&#34;U and Y matrices must be 2 dimensional arrays&#34;)
+        
+        # generate past (p) and future (f) vectors for training dataset
+        pMatrix_train, fMatrix_train = _get_past_future_vectors(U, Y, self.n_lags, getBothMatrices=True)
+        
+        # center data
+        pMatrix_train_centered = self.pScaler.fit_transform(pMatrix_train)
+        fMatrix_train_centered = self.fScaler.fit_transform(fMatrix_train)
+        
+        # perform SVD
+        sigma_pp = np.cov(pMatrix_train_centered, rowvar=False)
+        sigma_ff = np.cov(fMatrix_train_centered, rowvar=False)
+        sigma_pf = np.cov(pMatrix_train_centered, fMatrix_train_centered, rowvar=False)[:len(sigma_pp),len(sigma_pp):]
+        
+        matrixProduct = np.dot(np.dot(np.linalg.inv(scipy.linalg.sqrtm(sigma_pp).real), sigma_pf), np.linalg.inv(scipy.linalg.sqrtm(sigma_ff).real))
+        U, S, V = np.linalg.svd(matrixProduct)
+        J = np.dot(np.transpose(U), np.linalg.inv(scipy.linalg.sqrtm(sigma_pp).real))
+        self.SingularValues = S
+        
+        # plot Hankel singular values
+        if HankelPlot:
+            plt.figure()
+            plt.plot(np.arange(1,len(S)+1), S, &#39;*&#39;)
+            plt.xlabel(&#39;Order # &#39;), plt.ylabel(&#39;Singular value&#39;)
+            plt.xlim(1), plt.show()
+            
+        # find optimal model order via Singular values if specified
+        if autoFindNcomponents:
+            self.n_components = np.where(S/S[0] &gt; ratioThreshold)[0][-1] + 1    
+            # print message with selected model order
+            print(&#39;Optimal model order selected is: &#39;, self.n_components)
+        
+        # get the reduced order matrices
+        Jn = J[:self.n_components,:]
+        Je = J[self.n_components:,:]
+        self.Jn = Jn
+        self.Je = Je
+        
+        return self
+        
+    def computeMetrics(self, U, Y, isTrainingData=False):
+        &#34;&#34;&#34;
+        computes the monitoring indices for the supplied data.
+        
+        Parameters:
+        ---------------------
+        U: ndarray of shape (n_samples, n_features)
+            Input/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors
+            
+        Y: ndarray of shape (n_samples, n_targets)
+            Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.
+            
+        isTrainingData: bool, optional (default False)
+            If True, then the computed metrics are stored as object properties which are utilized during computation of metric thresholds
+                          
+        Returns:
+        ---------------------
+        Ts2: ndarray of shape (n_samples, ).
+            The first n_lags-1 entries are nan.
+        
+        Te2: ndarray of shape (n_samples, ).
+            The first n_lags-1 entries are nan.
+        
+        Q: ndarray of shape (n_samples, ).
+            The first n_lags-1 entries are nan.
+        &#34;&#34;&#34;
+        
+        if not hasattr(self, &#39;Jn&#39;):
+            raise AttributeError(&#39;Transformation matrix not found. Run fit method before computing the metrics.&#39;)
+        
+        # generate past (p) and future (f) vector Matrices and center them
+        pMatrix, _ = _get_past_future_vectors(U, Y, self.n_lags, getBothMatrices=False)
+        pMatrix_centered = self.pScaler.transform(pMatrix)
+        
+        # Ts2
+        Xn = np.dot(self.Jn, pMatrix_centered.T)
+        Ts2 = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(Xn[:,i], Xn[:,i]) for i in range(pMatrix_centered.shape[0])]))
+        
+        # Te2
+        Xe = np.dot(self.Je, pMatrix_centered.T)
+        Te2 = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(Xe[:,i], Xe[:,i]) for i in range(pMatrix_centered.shape[0])]))
+        
+        # Q
+        r = pMatrix_centered.T - np.dot(self.Jn.T, Xn)
+        Q = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(r[:,i], r[:,i]) for i in range(pMatrix_centered.shape[0])]))
+        
+        # save metrics for training data as attributes
+        if isTrainingData:
+            self.Ts2_train = Ts2
+            self.Te2_train = Te2
+            self.Q_train = Q
+        
+        return Ts2, Te2, Q
+    
+    def computeThresholds(self, method=&#39;percentile&#39;, percentile=99, alpha=0.01):
+        &#34;&#34;&#34;
+        computes the thresholds/control limits for the monitoring indices from training data
+        
+        Parameters:
+        ---------------------
+        method: &#39;percentile&#39; or &#39;statistical&#39;; default &#39;percentile&#39;   
+                    
+        percentile: int, optional (default 99)
+            The percentile value to use if method=&#39;percentile&#39;
+            
+        alpha: int, optional (default 99)
+            The significance level to use if method=&#39;statistical&#39;. 
+            Default value of 0.01 imples 99% control limit.
+                         
+        Returns
+        ---------------------
+        Ts2_CL: float
+            Control limit/threshold for Ts2 metric
+        
+        Te2_CL: float
+            Control limit/threshold for Te2 metric
+        
+        Q_CL: float
+            Control limit/threshold for Q metric
+        &#34;&#34;&#34;
+        
+        if not hasattr(self, &#39;Ts2_train&#39;):
+            raise AttributeError(&#39;Training metrices not found. Run computeMetrics method before computing the thresholds.&#39;)
+            
+        if method == &#39;percentile&#39;:
+            Ts2_CL = np.nanpercentile(self.Ts2_train, percentile)
+            Te2_CL = np.nanpercentile(self.Te2_train, percentile)
+            Q_CL = np.nanpercentile(self.Q_train, percentile)
+            
+        elif method == &#39;statistical&#39;:
+            N = self.T2_train.shape[0]
+            k = self.n_components
+            
+            # Ts2_CL
+            Ts2_CL = k*(N**2-1)*scipy.stats.f.ppf(1-alpha,k,N-k)/(N*(N-k))
+            
+            # Te2_CL
+            z = self.Je.shape[0]
+            Te2_CL = z*(N**2-1)*scipy.stats.f.ppf(1-alpha,z,N-z)/(N*(N-z))
+
+            # Q_CL
+            mean_Q_train = np.nanmean(self.Q_train)
+            var_Q_train = np.nanvar(self.Q_train)
+            
+            if mean_Q_train == 0:
+                mean_Q_train = sys.float_info.epsilon
+            if var_Q_train == 0:
+                var_Q_train = sys.float_info.epsilon
+
+            g = var_Q_train/(2*mean_Q_train)
+            h = 2*mean_Q_train**2/var_Q_train
+            Q_CL = g*scipy.stats.chi2.ppf(1-alpha, h)
+        
+        else:
+            raise ValueError(&#39;Incorrect choice of method parameter&#39;)
+            
+        # save control limits as attributes
+        self.Ts2_CL = Ts2_CL
+        self.Te2_CL = Te2_CL
+        self.Q_CL = Q_CL
+        
+        return Ts2_CL, Te2_CL, Q_CL
+    
+    def draw_monitoring_charts(self, metrics=None, logScaleY=False, title=&#39;&#39;):
+        &#34;&#34;&#34;
+        Draw the monitoring charts for the training or test data.
+        The control limits are plotted as red dashed line. 
+        
+        Parameters:
+        ---------------------
+        metrics: (optional) list or tuple of monitoring metrics (1D numpy arrays). Should follow the order (Ts2, Te2, Q).
+            If not specified, then the object&#39;s stored metrics from training data are used.
+            
+        title: str, optional 
+            Title for the charts                      
+        &#34;&#34;&#34;
+        
+        if metrics is None:
+            metrics = (self.Ts2_train, self.Te2_train, self.Q_train)
+        
+        # Ts2
+        plt.figure()
+        plt.plot(metrics[0], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+        if hasattr(self, &#39;Ts2_CL&#39;):
+            plt.axhline(self.Ts2_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+        plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Ts2&#39;)
+        if logScaleY:
+            plt.yscale(&#39;log&#39;)
+        plt.title(title), plt.show()
+                
+        # Te2
+        plt.figure()
+        plt.plot(metrics[1], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+        if hasattr(self, &#39;Te2_CL&#39;):
+            plt.axhline(self.Te2_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+        plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Te2&#39;)
+        if logScaleY:
+            plt.yscale(&#39;log&#39;)
+        plt.title(title), plt.show()
+        
+        # Q
+        plt.figure()
+        plt.plot(metrics[2], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+        if hasattr(self, &#39;Q_CL&#39;):
+            plt.axhline(self.Q_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+        plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Q&#39;)
+        if logScaleY:
+            plt.yscale(&#39;log&#39;)
+        plt.title(title), plt.show()
+    
+    def fit_4_monitoring(self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=False, method=&#39;percentile&#39;, percentile=99, alpha=0.01):
+        &#34;&#34;&#34;
+        A utility method that calls the following model-training related methods in succession.
+        
+        fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+        computeMetrics(U, Y, isTrainingData=True)
+        computeThresholds(method, percentile, alpha)
+        draw_monitoring_charts(title=&#39;training data&#39;)  
+        
+        Note: Check doc string of individual methods for details on the method parameters.
+        &#34;&#34;&#34;
+                
+        self.fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+        self.computeMetrics(U, Y, isTrainingData=True)
+        self.computeThresholds(method, percentile, alpha)
+        self.draw_monitoring_charts(title=&#39;training data&#39;)
+        
+        return self
+    
+    def detect_abnormalities(self, U, Y, drawMonitoringChart=True, title=&#39;&#39;):
+        &#34;&#34;&#34;
+        Detects if the observations are abnormal or normal. 
+        Detection is based on the logic that for a &#39;normal&#39; sample, the monitoring metrics should lie below their thresholds.
+        
+        Parameters:
+        ---------------------
+        U: ndarray of shape (n_samples, n_features)
+            Inputs/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors
+            
+        Y: ndarray of shape (n_samples,) or (n_samples, n_targets)
+            Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.
+            
+        drawMonitoringChart: bool, optional (default True)
+            If True, then the monitoring charts are also drawn.
+        
+        title: str, optional 
+            Title for the charts      
+                              
+        Returns:
+        ---------------------
+        abnormalityFlags: ndarray of shape (n_samples,)
+            Returns True for abnormal samples and False for normal samples
+        &#34;&#34;&#34;
+        
+        Ts2, Te2, Q = self.computeMetrics(U, Y)
+        abnormalityFlags = np.logical_or.reduce((Ts2 &gt; self.Ts2_CL, Te2 &gt; self.Te2_CL, Q &gt; self.Q_CL))
+        print(&#39;Number of abnormal sample(s): &#39;, np.sum(abnormalityFlags))
+        
+        if drawMonitoringChart:
+            self.draw_monitoring_charts(metrics=(Ts2, Te2, Q), title=title)
+                
+        return abnormalityFlags</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="PDS_CVA.PDS_CVA.computeMetrics"><code class="name flex">
+<span>def <span class="ident">computeMetrics</span></span>(<span>self, U, Y, isTrainingData=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>computes the monitoring indices for the supplied data.</p>
+<h2 id="parameters">Parameters:</h2>
+<p>U: ndarray of shape (n_samples, n_features)
+Input/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors</p>
+<p>Y: ndarray of shape (n_samples, n_targets)
+Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.</p>
+<p>isTrainingData: bool, optional (default False)
+If True, then the computed metrics are stored as object properties which are utilized during computation of metric thresholds</p>
+<h2 id="returns">Returns:</h2>
+<p>Ts2: ndarray of shape (n_samples, ).
+The first n_lags-1 entries are nan.</p>
+<p>Te2: ndarray of shape (n_samples, ).
+The first n_lags-1 entries are nan.</p>
+<p>Q: ndarray of shape (n_samples, ).
+The first n_lags-1 entries are nan.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def computeMetrics(self, U, Y, isTrainingData=False):
+    &#34;&#34;&#34;
+    computes the monitoring indices for the supplied data.
+    
+    Parameters:
+    ---------------------
+    U: ndarray of shape (n_samples, n_features)
+        Input/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors
+        
+    Y: ndarray of shape (n_samples, n_targets)
+        Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.
+        
+    isTrainingData: bool, optional (default False)
+        If True, then the computed metrics are stored as object properties which are utilized during computation of metric thresholds
+                      
+    Returns:
+    ---------------------
+    Ts2: ndarray of shape (n_samples, ).
+        The first n_lags-1 entries are nan.
+    
+    Te2: ndarray of shape (n_samples, ).
+        The first n_lags-1 entries are nan.
+    
+    Q: ndarray of shape (n_samples, ).
+        The first n_lags-1 entries are nan.
+    &#34;&#34;&#34;
+    
+    if not hasattr(self, &#39;Jn&#39;):
+        raise AttributeError(&#39;Transformation matrix not found. Run fit method before computing the metrics.&#39;)
+    
+    # generate past (p) and future (f) vector Matrices and center them
+    pMatrix, _ = _get_past_future_vectors(U, Y, self.n_lags, getBothMatrices=False)
+    pMatrix_centered = self.pScaler.transform(pMatrix)
+    
+    # Ts2
+    Xn = np.dot(self.Jn, pMatrix_centered.T)
+    Ts2 = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(Xn[:,i], Xn[:,i]) for i in range(pMatrix_centered.shape[0])]))
+    
+    # Te2
+    Xe = np.dot(self.Je, pMatrix_centered.T)
+    Te2 = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(Xe[:,i], Xe[:,i]) for i in range(pMatrix_centered.shape[0])]))
+    
+    # Q
+    r = pMatrix_centered.T - np.dot(self.Jn.T, Xn)
+    Q = np.append(np.repeat(np.nan, self.n_lags-1), np.array([np.dot(r[:,i], r[:,i]) for i in range(pMatrix_centered.shape[0])]))
+    
+    # save metrics for training data as attributes
+    if isTrainingData:
+        self.Ts2_train = Ts2
+        self.Te2_train = Te2
+        self.Q_train = Q
+    
+    return Ts2, Te2, Q</code></pre>
+</details>
+</dd>
+<dt id="PDS_CVA.PDS_CVA.computeThresholds"><code class="name flex">
+<span>def <span class="ident">computeThresholds</span></span>(<span>self, method='percentile', percentile=99, alpha=0.01)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>computes the thresholds/control limits for the monitoring indices from training data</p>
+<h2 id="parameters">Parameters:</h2>
+<p>method: 'percentile' or 'statistical'; default 'percentile'
+</p>
+<p>percentile: int, optional (default 99)
+The percentile value to use if method='percentile'</p>
+<p>alpha: int, optional (default 99)
+The significance level to use if method='statistical'.
+Default value of 0.01 imples 99% control limit.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>Ts2_CL</code></strong> :&ensp;<code>float</code></dt>
+<dd>Control limit/threshold for Ts2 metric</dd>
+<dt><strong><code>Te2_CL</code></strong> :&ensp;<code>float</code></dt>
+<dd>Control limit/threshold for Te2 metric</dd>
+<dt><strong><code>Q_CL</code></strong> :&ensp;<code>float</code></dt>
+<dd>Control limit/threshold for Q metric</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def computeThresholds(self, method=&#39;percentile&#39;, percentile=99, alpha=0.01):
+    &#34;&#34;&#34;
+    computes the thresholds/control limits for the monitoring indices from training data
+    
+    Parameters:
+    ---------------------
+    method: &#39;percentile&#39; or &#39;statistical&#39;; default &#39;percentile&#39;   
+                
+    percentile: int, optional (default 99)
+        The percentile value to use if method=&#39;percentile&#39;
+        
+    alpha: int, optional (default 99)
+        The significance level to use if method=&#39;statistical&#39;. 
+        Default value of 0.01 imples 99% control limit.
+                     
+    Returns
+    ---------------------
+    Ts2_CL: float
+        Control limit/threshold for Ts2 metric
+    
+    Te2_CL: float
+        Control limit/threshold for Te2 metric
+    
+    Q_CL: float
+        Control limit/threshold for Q metric
+    &#34;&#34;&#34;
+    
+    if not hasattr(self, &#39;Ts2_train&#39;):
+        raise AttributeError(&#39;Training metrices not found. Run computeMetrics method before computing the thresholds.&#39;)
+        
+    if method == &#39;percentile&#39;:
+        Ts2_CL = np.nanpercentile(self.Ts2_train, percentile)
+        Te2_CL = np.nanpercentile(self.Te2_train, percentile)
+        Q_CL = np.nanpercentile(self.Q_train, percentile)
+        
+    elif method == &#39;statistical&#39;:
+        N = self.T2_train.shape[0]
+        k = self.n_components
+        
+        # Ts2_CL
+        Ts2_CL = k*(N**2-1)*scipy.stats.f.ppf(1-alpha,k,N-k)/(N*(N-k))
+        
+        # Te2_CL
+        z = self.Je.shape[0]
+        Te2_CL = z*(N**2-1)*scipy.stats.f.ppf(1-alpha,z,N-z)/(N*(N-z))
+
+        # Q_CL
+        mean_Q_train = np.nanmean(self.Q_train)
+        var_Q_train = np.nanvar(self.Q_train)
+        
+        if mean_Q_train == 0:
+            mean_Q_train = sys.float_info.epsilon
+        if var_Q_train == 0:
+            var_Q_train = sys.float_info.epsilon
+
+        g = var_Q_train/(2*mean_Q_train)
+        h = 2*mean_Q_train**2/var_Q_train
+        Q_CL = g*scipy.stats.chi2.ppf(1-alpha, h)
+    
+    else:
+        raise ValueError(&#39;Incorrect choice of method parameter&#39;)
+        
+    # save control limits as attributes
+    self.Ts2_CL = Ts2_CL
+    self.Te2_CL = Te2_CL
+    self.Q_CL = Q_CL
+    
+    return Ts2_CL, Te2_CL, Q_CL</code></pre>
+</details>
+</dd>
+<dt id="PDS_CVA.PDS_CVA.detect_abnormalities"><code class="name flex">
+<span>def <span class="ident">detect_abnormalities</span></span>(<span>self, U, Y, drawMonitoringChart=True, title='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Detects if the observations are abnormal or normal.
+Detection is based on the logic that for a 'normal' sample, the monitoring metrics should lie below their thresholds.</p>
+<h2 id="parameters">Parameters:</h2>
+<p>U: ndarray of shape (n_samples, n_features)
+Inputs/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors</p>
+<p>Y: ndarray of shape (n_samples,) or (n_samples, n_targets)
+Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.</p>
+<p>drawMonitoringChart: bool, optional (default True)
+If True, then the monitoring charts are also drawn.</p>
+<p>title: str, optional
+Title for the charts
+</p>
+<h2 id="returns">Returns:</h2>
+<p>abnormalityFlags: ndarray of shape (n_samples,)
+Returns True for abnormal samples and False for normal samples</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def detect_abnormalities(self, U, Y, drawMonitoringChart=True, title=&#39;&#39;):
+    &#34;&#34;&#34;
+    Detects if the observations are abnormal or normal. 
+    Detection is based on the logic that for a &#39;normal&#39; sample, the monitoring metrics should lie below their thresholds.
+    
+    Parameters:
+    ---------------------
+    U: ndarray of shape (n_samples, n_features)
+        Inputs/Predictor vectors, where n_samples is the number of samples and n_features is the number of predictors
+        
+    Y: ndarray of shape (n_samples,) or (n_samples, n_targets)
+        Output/Target vectors, where n_samples is the number of samples and n_targets is the number of response variables.
+        
+    drawMonitoringChart: bool, optional (default True)
+        If True, then the monitoring charts are also drawn.
+    
+    title: str, optional 
+        Title for the charts      
+                          
+    Returns:
+    ---------------------
+    abnormalityFlags: ndarray of shape (n_samples,)
+        Returns True for abnormal samples and False for normal samples
+    &#34;&#34;&#34;
+    
+    Ts2, Te2, Q = self.computeMetrics(U, Y)
+    abnormalityFlags = np.logical_or.reduce((Ts2 &gt; self.Ts2_CL, Te2 &gt; self.Te2_CL, Q &gt; self.Q_CL))
+    print(&#39;Number of abnormal sample(s): &#39;, np.sum(abnormalityFlags))
+    
+    if drawMonitoringChart:
+        self.draw_monitoring_charts(metrics=(Ts2, Te2, Q), title=title)
+            
+    return abnormalityFlags</code></pre>
+</details>
+</dd>
+<dt id="PDS_CVA.PDS_CVA.draw_monitoring_charts"><code class="name flex">
+<span>def <span class="ident">draw_monitoring_charts</span></span>(<span>self, metrics=None, logScaleY=False, title='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Draw the monitoring charts for the training or test data.
+The control limits are plotted as red dashed line. </p>
+<h2 id="parameters">Parameters:</h2>
+<p>metrics: (optional) list or tuple of monitoring metrics (1D numpy arrays). Should follow the order (Ts2, Te2, Q).
+If not specified, then the object's stored metrics from training data are used.</p>
+<p>title: str, optional
+Title for the charts</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_monitoring_charts(self, metrics=None, logScaleY=False, title=&#39;&#39;):
+    &#34;&#34;&#34;
+    Draw the monitoring charts for the training or test data.
+    The control limits are plotted as red dashed line. 
+    
+    Parameters:
+    ---------------------
+    metrics: (optional) list or tuple of monitoring metrics (1D numpy arrays). Should follow the order (Ts2, Te2, Q).
+        If not specified, then the object&#39;s stored metrics from training data are used.
+        
+    title: str, optional 
+        Title for the charts                      
+    &#34;&#34;&#34;
+    
+    if metrics is None:
+        metrics = (self.Ts2_train, self.Te2_train, self.Q_train)
+    
+    # Ts2
+    plt.figure()
+    plt.plot(metrics[0], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+    if hasattr(self, &#39;Ts2_CL&#39;):
+        plt.axhline(self.Ts2_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+    plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Ts2&#39;)
+    if logScaleY:
+        plt.yscale(&#39;log&#39;)
+    plt.title(title), plt.show()
+            
+    # Te2
+    plt.figure()
+    plt.plot(metrics[1], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+    if hasattr(self, &#39;Te2_CL&#39;):
+        plt.axhline(self.Te2_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+    plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Te2&#39;)
+    if logScaleY:
+        plt.yscale(&#39;log&#39;)
+    plt.title(title), plt.show()
+    
+    # Q
+    plt.figure()
+    plt.plot(metrics[2], color=&#39;k&#39;, linestyle = &#39;:&#39;, marker=&#39;o&#39;, markerfacecolor = &#39;C4&#39;)
+    if hasattr(self, &#39;Q_CL&#39;):
+        plt.axhline(self.Q_CL, color = &#34;red&#34;, linestyle = &#34;-.&#34;)
+    plt.xlabel(&#39;Sample #&#39;), plt.ylabel(&#39;Q&#39;)
+    if logScaleY:
+        plt.yscale(&#39;log&#39;)
+    plt.title(title), plt.show()</code></pre>
+</details>
+</dd>
+<dt id="PDS_CVA.PDS_CVA.fit"><code class="name flex">
+<span>def <span class="ident">fit</span></span>(<span>self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the transformation matrices. Optionally finds the 'optimal' number of states / model order.</p>
+<h2 id="parameters">Parameters:</h2>
+<p>U: ndarray of shape (n_samples, n_features)
+Training input data, where n_samples is the number of samples and n_features is the number of predictors</p>
+<p>Y: ndarray of shape (n_samples, n_targets)
+Training output data, where n_samples is the number of samples and n_targets is the number of response variables.</p>
+<p>autoFindNcomponents: bool, optional (default False)
+Decides whether to compute the 'optimal' model order.
+If True, the Hankel singular values are used. Model order, n, is chosen such that the normalized values of the (n+1)th onwards singular
+values are below ratioThreshold.</p>
+<p>ratioThreshold: float, optional (default 0.1)
+Real value between 0 and 1.
+Used for determination of model order using normalized Hankel singular values.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>self</code></strong> :&ensp;<code>object</code></dt>
+<dd>fitted model</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fit(self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=True):
+    &#34;&#34;&#34;
+    Computes the transformation matrices. Optionally finds the &#39;optimal&#39; number of states / model order.
+    
+    Parameters:
+    ---------------------
+    U: ndarray of shape (n_samples, n_features)
+        Training input data, where n_samples is the number of samples and n_features is the number of predictors
+        
+    Y: ndarray of shape (n_samples, n_targets)
+        Training output data, where n_samples is the number of samples and n_targets is the number of response variables.
+            
+    autoFindNcomponents: bool, optional (default False)
+        Decides whether to compute the &#39;optimal&#39; model order. 
+        If True, the Hankel singular values are used. Model order, n, is chosen such that the normalized values of the (n+1)th onwards singular
+                 values are below ratioThreshold.
+        
+    ratioThreshold: float, optional (default 0.1)
+        Real value between 0 and 1.
+        Used for determination of model order using normalized Hankel singular values.
+        
+    Returns
+    ---------------------
+    self: object
+        fitted model
+    &#34;&#34;&#34;
+    
+    # sanity check (positive lag and order)
+    if U.ndim != 2 or Y.ndim != 2:
+        raise ValueError(&#34;U and Y matrices must be 2 dimensional arrays&#34;)
+    
+    # generate past (p) and future (f) vectors for training dataset
+    pMatrix_train, fMatrix_train = _get_past_future_vectors(U, Y, self.n_lags, getBothMatrices=True)
+    
+    # center data
+    pMatrix_train_centered = self.pScaler.fit_transform(pMatrix_train)
+    fMatrix_train_centered = self.fScaler.fit_transform(fMatrix_train)
+    
+    # perform SVD
+    sigma_pp = np.cov(pMatrix_train_centered, rowvar=False)
+    sigma_ff = np.cov(fMatrix_train_centered, rowvar=False)
+    sigma_pf = np.cov(pMatrix_train_centered, fMatrix_train_centered, rowvar=False)[:len(sigma_pp),len(sigma_pp):]
+    
+    matrixProduct = np.dot(np.dot(np.linalg.inv(scipy.linalg.sqrtm(sigma_pp).real), sigma_pf), np.linalg.inv(scipy.linalg.sqrtm(sigma_ff).real))
+    U, S, V = np.linalg.svd(matrixProduct)
+    J = np.dot(np.transpose(U), np.linalg.inv(scipy.linalg.sqrtm(sigma_pp).real))
+    self.SingularValues = S
+    
+    # plot Hankel singular values
+    if HankelPlot:
+        plt.figure()
+        plt.plot(np.arange(1,len(S)+1), S, &#39;*&#39;)
+        plt.xlabel(&#39;Order # &#39;), plt.ylabel(&#39;Singular value&#39;)
+        plt.xlim(1), plt.show()
+        
+    # find optimal model order via Singular values if specified
+    if autoFindNcomponents:
+        self.n_components = np.where(S/S[0] &gt; ratioThreshold)[0][-1] + 1    
+        # print message with selected model order
+        print(&#39;Optimal model order selected is: &#39;, self.n_components)
+    
+    # get the reduced order matrices
+    Jn = J[:self.n_components,:]
+    Je = J[self.n_components:,:]
+    self.Jn = Jn
+    self.Je = Je
+    
+    return self</code></pre>
+</details>
+</dd>
+<dt id="PDS_CVA.PDS_CVA.fit_4_monitoring"><code class="name flex">
+<span>def <span class="ident">fit_4_monitoring</span></span>(<span>self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=False, method='percentile', percentile=99, alpha=0.01)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A utility method that calls the following model-training related methods in succession.</p>
+<p>fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+computeMetrics(U, Y, isTrainingData=True)
+computeThresholds(method, percentile, alpha)
+draw_monitoring_charts(title='training data')
+</p>
+<p>Note: Check doc string of individual methods for details on the method parameters.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fit_4_monitoring(self, U, Y, autoFindNcomponents=False, ratioThreshold=0.1, HankelPlot=False, method=&#39;percentile&#39;, percentile=99, alpha=0.01):
+    &#34;&#34;&#34;
+    A utility method that calls the following model-training related methods in succession.
+    
+    fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+    computeMetrics(U, Y, isTrainingData=True)
+    computeThresholds(method, percentile, alpha)
+    draw_monitoring_charts(title=&#39;training data&#39;)  
+    
+    Note: Check doc string of individual methods for details on the method parameters.
+    &#34;&#34;&#34;
+            
+    self.fit(U, Y, autoFindNcomponents, ratioThreshold, HankelPlot)
+    self.computeMetrics(U, Y, isTrainingData=True)
+    self.computeThresholds(method, percentile, alpha)
+    self.draw_monitoring_charts(title=&#39;training data&#39;)
+    
+    return self</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="PDS_CVA.PDS_CVA" href="#PDS_CVA.PDS_CVA">PDS_CVA</a></code></h4>
+<ul class="">
+<li><code><a title="PDS_CVA.PDS_CVA.computeMetrics" href="#PDS_CVA.PDS_CVA.computeMetrics">computeMetrics</a></code></li>
+<li><code><a title="PDS_CVA.PDS_CVA.computeThresholds" href="#PDS_CVA.PDS_CVA.computeThresholds">computeThresholds</a></code></li>
+<li><code><a title="PDS_CVA.PDS_CVA.detect_abnormalities" href="#PDS_CVA.PDS_CVA.detect_abnormalities">detect_abnormalities</a></code></li>
+<li><code><a title="PDS_CVA.PDS_CVA.draw_monitoring_charts" href="#PDS_CVA.PDS_CVA.draw_monitoring_charts">draw_monitoring_charts</a></code></li>
+<li><code><a title="PDS_CVA.PDS_CVA.fit" href="#PDS_CVA.PDS_CVA.fit">fit</a></code></li>
+<li><code><a title="PDS_CVA.PDS_CVA.fit_4_monitoring" href="#PDS_CVA.PDS_CVA.fit_4_monitoring">fit_4_monitoring</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
