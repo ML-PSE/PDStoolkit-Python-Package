@@ -14,7 +14,7 @@ The PDStoolkit (Process Data Science Toolkit) package has been created to provid
 - Class documentations are provided in the 'docs' folder
 - Tutorials are provided in the 'tutorials' folder
 - The blog post (https://mlforpse.com/intro-to-pdstoolkit-python-package/) gives some perspective behind the motivation for development of PDStoolkit package 
-- Theoretical and conceptual details on specific algorithms can be found in our book (https://leanpub.com/machineLearningPSE) 
+- Theoretical and conceptual details on specific algorithms can be found in our book (https://mlforpse.com/books/) 
 
 ## Package Contents <a name="content"></a>
 The main modules in the package currently are:
