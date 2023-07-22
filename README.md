@@ -46,7 +46,7 @@ Import modules
     from PDStoolkit import PDS_PLS
 
 ## Usage <a name="usage"></a>
-The following code builds a PCA-based process monitoirng model using PDS-PCA class and uses it for subsequent fault detectiona and fault diagnosis on test data. For details on data and results, see the ProcessMonitoring_PCA notebook in the tutorials folder.
+The following code builds a PCA-based process monitoring model using PDS-PCA class and uses it for subsequent fault detection and fault diagnosis on test data. For details on data and results, see the ProcessMonitoring_PCA notebook in the tutorials folder.
 
 ```
 # import 
