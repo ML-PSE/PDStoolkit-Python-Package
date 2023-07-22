@@ -62,7 +62,7 @@ pca.draw_monitoring_charts(title='training data')
 
 # fault detection and fault diagnosis on test data
 pca.detect_abnormalities(data_test_normal, title='test data')
-T2_contri, SPE_contri = pca.get_contributions(data_test_normal[15,:])
+T2_contri, SPE_contri = pca.get_contributions(data_test_normal)
 ```
     
 ### License
