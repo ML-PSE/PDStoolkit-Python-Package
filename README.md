@@ -11,10 +11,11 @@
 The PDStoolkit (Process Data Science Toolkit) package has been created to provide easy-to-use modules to help quickly build data-based solutions for process systems such as those for process monitoring, modeling, fault diagnosis, system identification, etc. Current modules in the package are wrappers around pre-existing Sklearn's classes and provide several additional methods to facilitate a process data scientist's job. Details on these are provided in the following section. More modules relevant for process data science will be added over time.
 
 ## Documentation and Tutorials <a name="docs"></a>
+- PDStoolkit_Manual.pdf provides some quick information on the algorithms implemented in the package
 - Class documentations are provided in the 'docs' folder
 - Tutorials are provided in the 'tutorials' folder
 - The blog post (https://mlforpse.com/intro-to-pdstoolkit-python-package/) gives some perspective behind the motivation for development of PDStoolkit package 
-- Theoretical and conceptual details on specific algorithms can be found in our book (https://mlforpse.com/books/) 
+- Theoretical and conceptual details on specific algorithms can be found in our books (https://mlforpse.com/books/) 
 
 ## Package Contents <a name="content"></a>
 The main modules in the package currently are:
