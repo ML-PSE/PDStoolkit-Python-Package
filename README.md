@@ -28,6 +28,7 @@ The main modules in the package currently are:
      - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
      - *detect_abnormalities*: detects if the observations are abnormal or normal samples
      - *get_contributions*: returns abnormality contributions for T2 and SPE for an observation sample
+       
  - **PDS_PLS: Partial Least Squares regression for Process Data Science**
    - This class is a child of [sklearn.cross_decomposition.PLSRegression class](http://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.PLSRegression.html) 
    - The following additional methods are provided
@@ -35,6 +36,7 @@ The main modules in the package currently are:
      - *computeThresholds*: computes the thresholds / control limits for the monitoring indices from training data
      - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
      - *detect_abnormalities*: detects if the observations are abnormal or normal samples
+       
  - **PDS_DPCA: Dynamic Principal Component analysis for Process Data Science**
    - This class is a child of [sklearn.decomposition.PCA class](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) 
    - The following additional methods are provided
@@ -42,20 +44,22 @@ The main modules in the package currently are:
      - *computeThresholds*: computes the thresholds / control limits for the monitoring indices from training data
      - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
      - *detect_abnormalities*: detects if the observations are abnormal or normal samples
+       
  - **PDS_DPLS: Dynamic Partial Least Squares regression for Process Data Science**
-  - This class is a child of [sklearn.cross_decomposition.PLSRegression class](http://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.PLSRegression.html) 
-  - The following additional methods are provided
-    - *computeMetrics*: computes the monitoring indices (SPEx, SPEy, T2) for the supplied data
-    - *computeThresholds*: computes the thresholds / control limits for the monitoring indices from training data
-    - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
-    - *detect_abnormalities*: detects if the observations are abnormal or normal samples
+   - This class is a child of [sklearn.cross_decomposition.PLSRegression class](http://scikit-learn.org/stable/modules/generated/sklearn.cross_decomposition.PLSRegression.html) 
+   - The following additional methods are provided
+     - *computeMetrics*: computes the monitoring indices (SPEx, SPEy, T2) for the supplied data
+     - *computeThresholds*: computes the thresholds / control limits for the monitoring indices from training data
+     - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
+     - *detect_abnormalities*: detects if the observations are abnormal or normal samples
+       
  - **PDS_CVA: Canonical Variate Analysis for Process Data Science**
-  - This class is written from scratch 
-  - The following additional methods are provided
-    - *computeMetrics*: computes the monitoring indices (Ts2, Te2, Q) for the supplied data
-    - *computeThresholds*: computes the thresholds / control limits for the monitoring indices from training data
-    - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
-    - *detect_abnormalities*: detects if the observations are abnormal or normal samples
+   - This class is written from scratch 
+   - The following additional methods are provided
+     - *computeMetrics*: computes the monitoring indices (Ts2, Te2, Q) for the supplied data
+     - *computeThresholds*: computes the thresholds / control limits for the monitoring indices from training data
+     - *draw_monitoring_charts*: draws the monitoring charts for the training or test data
+     - *detect_abnormalities*: detects if the observations are abnormal or normal samples
  
 ## Installation <a name="install"></a>
 Installation from Pypi:
